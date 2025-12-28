@@ -1,68 +1,64 @@
 zombie-cleaner/
-├── public/
-│   ├── favicon.ico
-│   └── images/
-├── src/
-│   ├── components/
-│   │   ├── auth/
-│   │   │   ├── LoginForm.tsx
-│   │   │   └── RegisterForm.tsx
-│   │   ├── dashboard/
-│   │   │   ├── EnvironmentCard.tsx
-│   │   │   ├── AddEnvironmentModal.tsx
-│   │   │   └── EnvironmentList.tsx
-│   │   ├── layout/
-│   │   │   ├── Layout.tsx
-│   │   │   ├── Header.tsx
-│   │   │   ├── Sidebar.tsx
-│   │   │   └── LoadingSkeleton.tsx
-│   │   ├── ui/
-│   │   │   ├── Button.tsx
-│   │   │   ├── Input.tsx
-│   │   │   ├── Card.tsx
-│   │   │   └── Modal.tsx
-│   │   └── shared/
-│   │       └── ProtectedRoute.tsx
-│   ├── constants/
-│   │   ├── index.ts
-│   │   ├── routes.ts
-│   │   └── aws.ts
-│   ├── hooks/
-│   │   ├── useAuth.ts
-│   │   ├── useEnvironments.ts
-│   │   └── useModal.ts
-│   ├── layouts/
-│   │   ├── AuthLayout.tsx
-│   │   └── DashboardLayout.tsx
-│   ├── lib/
-│   │   ├── auth.ts
-│   │   ├── validation.ts
-│   │   └── utils.ts
-│   ├── pages/
-│   │   ├── api/
-│   │   │   └── auth/
-│   │   │       └── login.ts (mock API)
-│   │   ├── _app.tsx
-│   │   ├── _document.tsx
-│   │   ├── index.tsx (login)
-│   │   ├── register.tsx
-│   │   ├── dashboard.tsx
-│   │   ├── environment/
-│   │   │   └── [id].tsx
-│   │   └── 404.tsx
-│   ├── store/
-│   │   ├── authStore.ts
-│   │   └── environmentStore.ts
-│   ├── styles/
-│   │   └── globals.css
-│   ├── types/
-│   │   ├── index.ts
-│   │   ├── auth.ts
-│   │   └── environment.ts
-│   └── utils/
-│       ├── mockData.ts
-│       └── helpers.ts
-├── tailwind.config.ts
-├── tsconfig.json
-├── package.json
-└── README.md
+├── app/
+│   ├── (auth)/
+│   │   ├── login/
+│   │   │   └── page.tsx
+│   │   ├── register/
+│   │   │   └── page.tsx
+│   │   └── layout.tsx
+│   ├── dashboard/
+│   │   └── page.tsx
+│   ├── environment/
+│   │   └── [id]/
+│   │       └── page.tsx
+│   ├── api/
+│   │   └── auth/
+│   │       └── route.ts
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx
+│   │   ├── Sidebar.tsx
+│   │   └── AuthLayout.tsx
+│   ├── dashboard/
+│   │   ├── EnvironmentCard.tsx
+│   │   ├── EnvironmentList.tsx
+│   │   ├── EnvironmentListSkeleton.tsx
+│   │   └── AddEnvironmentModal.tsx
+│   ├── auth/
+│   │   ├── LoginForm.tsx
+│   │   └── RegisterForm.tsx
+│   ├── ui/
+│   │   ├── Button.tsx
+│   │   ├── Input.tsx
+│   │   ├── Card.tsx
+│   │   ├── Modal.tsx
+│   │   └── Skeleton.tsx
+│   └── shared/
+│       └── LoadingSpinner.tsx
+├── hooks/
+│   ├── useAuth.ts
+│   ├── useEnvironments.ts
+│   └── useModal.ts
+├── lib/
+│   ├── api/
+│   │   └── client.ts
+│   ├── auth.ts
+│   └── utils.ts
+├── types/
+│   ├── index.ts
+│   ├── auth.ts
+│   └── environment.ts
+├── constants/
+│   ├── index.ts
+│   ├── paths.ts
+│   └── aws.ts
+├── mock-data/
+│   ├── environments.json
+│   └── users.json
+├── utils/
+│   ├── validation.ts
+│   └── formatters.ts
+└── styles/
+    └── globals.css
