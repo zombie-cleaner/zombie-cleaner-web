@@ -1,4 +1,4 @@
-import { LoginForm } from "@/components/login-form"
+import { LoginForm } from "@/components/auth/login-form"
 import type { Metadata } from "next"
 import { config } from "@/config"
 export const metadata: Metadata = {
