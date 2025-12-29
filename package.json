@@ -1,6 +1,7 @@
 {
-  "name": "my-v0-project",
+  "name": "zombie-cleaner-web",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
