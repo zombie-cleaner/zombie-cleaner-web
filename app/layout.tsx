@@ -3,12 +3,13 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import { config } from "@/config"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Zombie Cleaner - AWS Resource Management",
+  title: `${config.appName} - AWS Resource Management`,
   description: "Identify and manage unused AWS resources efficiently",
   generator: "v0.app",
   icons: {

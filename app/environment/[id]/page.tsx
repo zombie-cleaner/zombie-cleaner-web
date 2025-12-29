@@ -1,9 +1,10 @@
 import { DashboardHeader } from "@/components/dashboard/dashboard-header"
 import { EnvironmentDetail } from "@/components/environment/environment-detail"
+import { config } from "@/config"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Environment Details - Zombie Cleaner",
+  title: `Environment Details - ${config.appName}`,
   description: "View AWS environment details",
 }
 
