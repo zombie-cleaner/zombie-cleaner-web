@@ -18,7 +18,7 @@ export function EnvironmentCard({ environment }: EnvironmentCardProps) {
         <div className="space-y-2">
           <div>
             <p className="text-xs text-muted-foreground mb-1">AWS Role ARN</p>
-            <p className="text-sm font-mono text-foreground/80 break-all">{environment.roleArn}</p>
+            <p className="text-sm min-h-12 font-mono text-foreground/80 break-all">{environment.roleArn}</p>
           </div>
         </div>
       </CardContent>

@@ -16,9 +16,9 @@ export function DashboardHeader() {
   return (
     <header className="border-b border-border bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-foreground">${config.appName}</h1>
-        <Button variant="ghost" size="sm" onClick={handleLogout}>
-          <LogOut className="h-4 w-4 mr-2" />
+        <h1 className="text-2xl font-bold text-foreground">{config.appName}</h1>
+        <Button className="font-bold" variant="ghost" size="sm" onClick={handleLogout}>
+          <LogOut className="h-4 w-4" />
           Logout
         </Button>
       </div>
