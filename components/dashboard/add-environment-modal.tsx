@@ -50,7 +50,7 @@ export function AddEnvironmentModal({ isOpen, onClose, onAdd }: AddEnvironmentMo
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-125">
         <DialogHeader>
           <DialogTitle>Add AWS Environment</DialogTitle>
           <DialogDescription>Connect a new AWS development environment to manage zombie resources</DialogDescription>
