@@ -1,13 +1,13 @@
 import React from 'react'
 import { Button } from '../ui/button'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 const CtaSection = () => {
     const router = useRouter();
   return (
     <div>
        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <div className="border border-border rounded-lg p-12 bg-card">
+        <div className=" p-12 bg-card">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Ready to Clean Up Your AWS?</h2>
           <p className="md:text-lg text-muted-foreground mb-8">
             Start optimizing your cloud infrastructure today. No credit card required.
