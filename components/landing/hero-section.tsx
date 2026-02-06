@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
@@ -7,6 +7,13 @@ const HeroSection = () => {
   const router = useRouter();
   return (
     <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center">
+      <div className="absolute bottom-0 right-0 overflow-hidden">
+        <img
+          className="w-1/2 h-1/2 origin-bottom-right transform scale-150 lg:w-auto lg:mx-auto lg:object-cover lg:scale-70"
+          src="https://cdn.rareblocks.xyz/collection/clarity/images/hero/1/background-pattern.png"
+          alt=""
+        />
+      </div>
       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted border border-border mb-6">
         <Trash2 className="h-4 w-4 text-muted-foreground" />
         <span className="text-sm text-muted-foreground">
