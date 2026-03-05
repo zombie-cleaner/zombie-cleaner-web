@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Card,
@@ -6,26 +6,19 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import {
-  ArrowLeft,
-  Info,
-  CheckCircle2,
-  Cloud,
-  Trash2,
-} from "lucide-react"
-import Link from "next/link"
-import { useEnvironments } from "@/hooks/use-environments"
-import { Badge } from "@/components/ui/badge"
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Info, CheckCircle2, Cloud, Trash2 } from "lucide-react";
+import Link from "next/link";
+import { useEnvironments } from "@/hooks/use-environments";
 
 interface EnvironmentDetailProps {
-  environmentId: string
+  environmentId: string;
 }
 
 export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
-  const { environments } = useEnvironments()
-  const environment = environments.find((env) => env.id === environmentId)
+  const { environments } = useEnvironments();
+  const environment = environments.find((env) => env.id === environmentId);
 
   if (!environment) {
     return (
@@ -46,7 +39,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
           </CardHeader>
         </Card>
       </div>
-    )
+    );
   }
 
   return (
@@ -69,13 +62,12 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
             Environment details and resource management
           </p>
         </div>
-
         {/* <Badge
           variant="secondary"
           className="flex items-center gap-1.5"
         > */}
-          <CheckCircle2 className="h-4 w-4 text-green-500" />
-          Connected
+        <CheckCircle2 className="h-4 w-4 text-green-500" />
+        Connected
         {/* </Badge> */}
       </div>
 
@@ -84,9 +76,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
         {/* Environment Info */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle className="text-lg">
-              Environment Information
-            </CardTitle>
+            <CardTitle className="text-lg">Environment Information</CardTitle>
             <CardDescription>
               Basic configuration and connection details
             </CardDescription>
@@ -94,11 +84,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
 
           <CardContent className="space-y-5">
             <InfoRow label="Environment Name" value={environment.name} />
-            <InfoRow
-              label="AWS Role ARN"
-              value={environment.roleArn}
-              mono
-            />
+            <InfoRow label="AWS Role ARN" value={environment.roleArn} mono />
             <InfoRow
               label="Connection Status"
               value="Connected"
@@ -114,9 +100,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
               <Cloud className="h-5 w-5 text-muted-foreground" />
               Resources
             </CardTitle>
-            <CardDescription>
-              Detected AWS resource types
-            </CardDescription>
+            <CardDescription>Detected AWS resource types</CardDescription>
           </CardHeader>
 
           <CardContent className="space-y-4">
@@ -154,7 +138,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
         </Card>
       </div>
     </div>
-  )
+  );
 }
 
 /* ---------- Small UI Helpers ---------- */
@@ -165,10 +149,10 @@ function InfoRow({
   icon,
   mono,
 }: {
-  label: string
-  value: string
-  icon?: React.ReactNode
-  mono?: boolean
+  label: string;
+  value: string;
+  icon?: React.ReactNode;
+  mono?: boolean;
 }) {
   return (
     <div className="flex items-start justify-between gap-4">
@@ -182,20 +166,14 @@ function InfoRow({
         {value}
       </div>
     </div>
-  )
+  );
 }
 
-function ResourceStat({
-  label,
-  value,
-}: {
-  label: string
-  value: string
-}) {
+function ResourceStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between text-sm">
       <span className="text-muted-foreground">{label}</span>
       <span className="font-medium">{value}</span>
     </div>
-  )
+  );
 }
