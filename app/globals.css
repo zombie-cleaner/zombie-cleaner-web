@@ -123,4 +123,8 @@
   body {
     @apply bg-background text-foreground;
   }
+  button,
+  a {
+    @apply transition-all duration-200;
+  }
 }

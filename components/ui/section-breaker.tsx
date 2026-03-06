@@ -1,9 +1,9 @@
 const SectionBreaker = () => {
   return (
-    <div className="flex w-full items-center justify-center ">
-      <hr className="text-center md:h-1 w-4/6 bg-gray-900"></hr>
-</div>
-  )
-}
+    <div className="flex w-full items-center justify-center py-8">
+      <div className="w-4/6 border-t border-border/30"></div>
+    </div>
+  );
+};
 
-export default SectionBreaker
+export default SectionBreaker;

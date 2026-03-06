@@ -34,7 +34,7 @@ const HeroSection = () => {
       <Button
         size="lg"
         onClick={() => router.push("/register")}
-        className="h-12 px-8 text-base"
+        className="h-12 px-8 text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
       >
         Get Started
       </Button>

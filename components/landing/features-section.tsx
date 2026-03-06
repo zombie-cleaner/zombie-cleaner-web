@@ -32,19 +32,24 @@ const FeaturesSection = () => {
         Key Features
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {features?.map((feature) => (
-          <div className="border border-border rounded-lg p-6 bg-card">
-            <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-              {feature.icon ? (
+        {features?.map((feature, index) => (
+          <div
+            key={index}
+            className="border border-border rounded-lg p-6 bg-card shadow-sm hover:shadow-md transition-all duration-300 hover:border-primary/30 hover:-translate-y-0.5"
+          >
+            <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 transition-colors duration-300">
+              {feature?.icon ? (
                 <feature.icon className="h-6 w-6 text-primary" />
               ) : (
                 <></>
               )}
             </div>
             <h3 className="text-lg font-semibold text-foreground mb-2">
-              {feature.title || ""}
+              {feature?.title || ""}
             </h3>
-            <p className="text-muted-foreground">{feature.description || ""}</p>
+            <p className="text-muted-foreground">
+              {feature?.description || ""}
+            </p>
           </div>
         ))}
       </div>

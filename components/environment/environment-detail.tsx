@@ -46,7 +46,11 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
     <div className="space-y-8">
       {/* Back */}
       <Link href="/dashboard">
-        <Button variant="ghost" size="sm">
+        <Button
+          variant="ghost"
+          size="sm"
+          className="hover:bg-accent/50 transition-colors"
+        >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Dashboard
         </Button>
@@ -74,7 +78,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
       {/* Main Grid */}
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Environment Info */}
-        <Card className="lg:col-span-2">
+        <Card className="lg:col-span-2 shadow-sm hover:shadow-md transition-shadow">
           <CardHeader>
             <CardTitle className="text-lg">Environment Information</CardTitle>
             <CardDescription>
@@ -94,7 +98,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
         </Card>
 
         {/* Resources Summary */}
-        <Card>
+        <Card className="shadow-sm hover:shadow-md transition-shadow">
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
               <Cloud className="h-5 w-5 text-muted-foreground" />
@@ -115,7 +119,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
         </Card>
 
         {/* Zombie Resources */}
-        <Card className="lg:col-span-3 border-dashed">
+        <Card className="lg:col-span-3 border-dashed border-muted-foreground/30">
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
               <Trash2 className="h-5 w-5 text-muted-foreground" />
@@ -127,7 +131,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
           </CardHeader>
 
           <CardContent>
-            <div className="flex flex-col items-center justify-center py-10 text-center gap-2">
+            <div className="flex flex-col items-center justify-center py-10 text-center gap-2 bg-muted/30 rounded-lg border border-border/40">
               <p className="text-sm text-muted-foreground">
                 Automated scanning and cleanup rules
                 <br />

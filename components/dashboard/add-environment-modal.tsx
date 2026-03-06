@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-
+import { clientConfig } from "@/config/client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,8 +32,7 @@ export function AddEnvironmentModal({
   const [roleArn, setRoleArn] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const templateUrl =
-    "https://platform-access-bucket-dev-zombie-cleaner.s3.us-east-1.amazonaws.com/platformAccessPolicy.json";
+  const templateUrl = clientConfig.templateUrl;
   const externalId = crypto.randomUUID();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,9 +54,28 @@ export function AddEnvironmentModal({
     onClose();
   };
 
+  const instructions = [
+    {
+      key: "create-stack",
+      text: "Create a new stack using the provided template URL",
+    },
+    {
+      key: "wait-stack",
+      text: "Wait till stack creation is complete",
+    },
+    {
+      key: "get-role",
+      text: "Get the IAM role from outputs tab (e.g. arn:aws:iam::123456789012:role/ZombieCleanerRole)",
+    },
+    {
+      key: "copy-role",
+      text: "Copy & paste the role ARN into the form to connect your environment",
+    },
+  ];
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-125">
+      <DialogContent className="sm:max-w-150">
         <DialogHeader>
           <DialogTitle>Add AWS Environment</DialogTitle>
           <DialogDescription>
@@ -100,7 +118,7 @@ export function AddEnvironmentModal({
                 size="sm"
                 onClick={() =>
                   window.open(
-                    `https://console.aws.amazon.com/cloudformation/home#/stacks/create/review?templateURL=${templateUrl}&stackName=MyApp-Integration&param_ExternalId=${externalId}`,
+                    `https://console.aws.amazon.com/cloudformation/home#/stacks/create/review?templateURL=${templateUrl}&stackName=idlezero-Integration&param_ExternalId=${externalId}`,
                     "_blank",
                   )
                 }
@@ -109,20 +127,14 @@ export function AddEnvironmentModal({
                 Open AWS CloudFormation
               </Button>
             </div>
-            <div className="bg-muted p-4 rounded-lg border border-border">
+            <div className="bg-muted/50 p-4 rounded-lg border border-border/50 shadow-sm">
               <p className="text-sm text-foreground mb-2 font-medium">
                 Instructions
               </p>
-              <ul className="list-disc list-inside mt-3 space-y-1 text-xs text-muted-foreground">
-                <li>Create a new stack using the provided template URL</li>
-                <li>
-                  Get the IAM role from outputs tab (e.g.
-                  arn:aws:iam::123456789012:role/ZombieCleanerRole)
-                </li>
-                <li>
-                  Copy & paste the role ARN into the form to connect your
-                  environment
-                </li>
+              <ul className="list-disc list-inside mt-3 space-y-1.5 text-xs text-muted-foreground">
+                {instructions.map((item) => (
+                  <li key={item.key}>{item.text}</li>
+                ))}
               </ul>
             </div>
           </div>

@@ -1,35 +1,42 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import Link from "next/link"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import Link from "next/link";
 
 export function RegisterForm() {
-  const router = useRouter()
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
+    e.preventDefault();
+    setIsLoading(true);
 
     // Simulate registration
     setTimeout(() => {
       // Mock registration - redirect to login
-      router.push("/login")
-    }, 800)
-  }
+      router.push("/login");
+    }, 800);
+  };
 
   return (
-    <Card className="border-border">
+    <Card className="border-border shadow-lg">
       <CardHeader>
         <CardTitle className="text-xl">Register</CardTitle>
         <CardDescription>Create a new account to get started</CardDescription>
@@ -74,17 +81,24 @@ export function RegisterForm() {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button
+            type="submit"
+            className="w-full shadow-md hover:shadow-lg transition-shadow"
+            disabled={isLoading}
+          >
             {isLoading ? "Creating account..." : "Register"}
           </Button>
           <p className="text-sm text-muted-foreground text-center">
             {"Already have an account? "}
-            <Link href="/login" className="text-foreground hover:underline font-medium">
+            <Link
+              href="/login"
+              className="text-foreground hover:underline font-medium"
+            >
               Login
             </Link>
           </p>
         </CardFooter>
       </form>
     </Card>
-  )
+  );
 }
