@@ -28,8 +28,12 @@ export function AddEnvironmentModal({
   onClose,
   onAdd,
 }: AddEnvironmentModalProps) {
-  const [name, setName] = useState("");
-  const [roleArn, setRoleArn] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    roleArn: "",
+  });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const templateUrl = clientConfig.templateUrl;
@@ -40,17 +44,19 @@ export function AddEnvironmentModal({
 
     // Simulate API call
     setTimeout(() => {
-      onAdd({ name, roleArn });
+      onAdd({
+        name: formData.name,
+        description: formData.description,
+        roleArn: formData.roleArn,
+      });
       setIsSubmitting(false);
-      setName("");
-      setRoleArn("");
+      setFormData({ name: "", description: "", roleArn: "" });
       onClose();
     }, 500);
   };
 
   const handleCancel = () => {
-    setName("");
-    setRoleArn("");
+    setFormData({ name: "", description: "", roleArn: "" });
     onClose();
   };
 
@@ -88,9 +94,24 @@ export function AddEnvironmentModal({
               <Label htmlFor="env-name">Environment Name</Label>
               <Input
                 id="env-name"
-                placeholder="Dev Environment"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                placeholder="dev_environment"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                required
+                disabled={isSubmitting}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="env-description">Environment Description</Label>
+              <Input
+                id="env-description"
+                placeholder="Description for your environment"
+                value={formData.description}
+                onChange={(e) =>
+                  setFormData({ ...formData, description: e.target.value })
+                }
                 required
                 disabled={isSubmitting}
               />
@@ -100,8 +121,10 @@ export function AddEnvironmentModal({
               <Input
                 id="role-arn"
                 placeholder="arn:aws:iam::123456789012:role/ZombieCleanerRole"
-                value={roleArn}
-                onChange={(e) => setRoleArn(e.target.value)}
+                value={formData.roleArn}
+                onChange={(e) =>
+                  setFormData({ ...formData, roleArn: e.target.value })
+                }
                 required
                 disabled={isSubmitting}
               />
