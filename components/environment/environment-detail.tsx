@@ -8,7 +8,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Info, CheckCircle2, Cloud, Trash2 } from "lucide-react";
+import {
+  ArrowLeft,
+  CheckCircle2,
+  Cloud,
+  Trash2,
+  Server,
+  Database,
+  FunctionSquare,
+  Clock,
+} from "lucide-react";
 import Link from "next/link";
 import { useEnvironments } from "@/hooks/use-environments";
 
@@ -34,7 +43,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
           <CardHeader>
             <CardTitle>Environment not found</CardTitle>
             <CardDescription>
-              The environment you're looking for doesn't exist.
+              The environment you&apos;re looking for doesn&apos;t exist.
             </CardDescription>
           </CardHeader>
         </Card>
@@ -43,7 +52,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Back */}
       <Link href="/dashboard">
         <Button
@@ -57,72 +66,93 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
       </Link>
 
       {/* Page Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">
             {environment.name}
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
             Environment details and resource management
           </p>
         </div>
-        {/* <Badge
-          variant="secondary"
-          className="flex items-center gap-1.5"
-        > */}
-        <CheckCircle2 className="h-4 w-4 text-green-500" />
-        Connected
-        {/* </Badge> */}
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 w-fit">
+          <CheckCircle2 className="h-3.5 w-3.5" />
+          Connected
+        </span>
       </div>
 
       {/* Main Grid */}
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Environment Info */}
-        <Card className="lg:col-span-2 shadow-sm hover:shadow-md transition-shadow">
+        <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle className="text-lg">Environment Information</CardTitle>
+            <CardTitle className="text-base font-semibold">
+              Environment Information
+            </CardTitle>
             <CardDescription>
               Basic configuration and connection details
             </CardDescription>
           </CardHeader>
 
-          <CardContent className="space-y-5">
-            <InfoRow label="Environment Name" value={environment.name} />
-            <InfoRow label="AWS Role ARN" value={environment.roleArn} mono />
-            <InfoRow
-              label="Connection Status"
-              value="Connected"
-              icon={<CheckCircle2 className="h-4 w-4 text-green-500" />}
-            />
+          <CardContent>
+            <div className="divide-y divide-border">
+              <InfoRow label="Environment Name" value={environment.name} />
+              <InfoRow label="AWS Role ARN" value={environment.roleArn} mono />
+              <InfoRow
+                label="Connection Status"
+                value="Connected"
+                icon={<CheckCircle2 className="h-4 w-4 text-emerald-500" />}
+              />
+              {environment.description && (
+                <InfoRow label="Description" value={environment.description} />
+              )}
+            </div>
           </CardContent>
         </Card>
 
         {/* Resources Summary */}
-        <Card className="shadow-sm hover:shadow-md transition-shadow">
+        <Card>
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Cloud className="h-5 w-5 text-muted-foreground" />
+            <CardTitle className="text-base font-semibold flex items-center gap-2">
+              <Cloud className="h-4 w-4 text-primary" />
               Resources
             </CardTitle>
             <CardDescription>Detected AWS resource types</CardDescription>
           </CardHeader>
 
-          <CardContent className="space-y-4">
-            <ResourceStat label="EC2 Instances" value="—" />
-            <ResourceStat label="S3 Buckets" value="—" />
-            <ResourceStat label="Lambda Functions" value="—" />
+          <CardContent className="space-y-3">
+            <ResourceStat
+              label="EC2 Instances"
+              value="—"
+              icon={<Server className="h-4 w-4 text-muted-foreground/60" />}
+            />
+            <ResourceStat
+              label="S3 Buckets"
+              value="—"
+              icon={<Database className="h-4 w-4 text-muted-foreground/60" />}
+            />
+            <ResourceStat
+              label="Lambda Functions"
+              value="—"
+              icon={
+                <FunctionSquare className="h-4 w-4 text-muted-foreground/60" />
+              }
+            />
 
-            <p className="text-xs text-muted-foreground pt-2">
-              Resource discovery coming soon
-            </p>
+            <div className="flex items-center gap-1.5 pt-3 border-t border-border/50">
+              <Clock className="h-3.5 w-3.5 text-muted-foreground/60" />
+              <p className="text-xs text-muted-foreground">
+                Resource discovery coming soon
+              </p>
+            </div>
           </CardContent>
         </Card>
 
         {/* Zombie Resources */}
-        <Card className="lg:col-span-3 border-dashed border-muted-foreground/30">
+        <Card className="lg:col-span-3 border-dashed">
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Trash2 className="h-5 w-5 text-muted-foreground" />
+            <CardTitle className="text-base font-semibold flex items-center gap-2">
+              <Trash2 className="h-4 w-4 text-destructive/70" />
               Zombie Resources
             </CardTitle>
             <CardDescription>
@@ -131,12 +161,19 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
           </CardHeader>
 
           <CardContent>
-            <div className="flex flex-col items-center justify-center py-10 text-center gap-2 bg-muted/30 rounded-lg border border-border/40">
-              <p className="text-sm text-muted-foreground">
-                Automated scanning and cleanup rules
-                <br />
-                will be available in the next phase.
-              </p>
+            <div className="flex flex-col items-center justify-center py-12 text-center gap-3 bg-muted/20 rounded-lg border border-dashed border-border/60">
+              <div className="h-10 w-10 rounded-full bg-muted/50 flex items-center justify-center">
+                <Trash2 className="h-5 w-5 text-muted-foreground/50" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-muted-foreground">
+                  No zombie resources detected yet
+                </p>
+                <p className="text-xs text-muted-foreground/70 mt-1">
+                  Automated scanning and cleanup rules will be available in the
+                  next phase.
+                </p>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -159,25 +196,41 @@ function InfoRow({
   mono?: boolean;
 }) {
   return (
-    <div className="flex items-start justify-between gap-4">
-      <p className="text-sm text-muted-foreground">{label}</p>
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 py-3 first:pt-0 last:pb-0">
+      <p className="text-sm text-muted-foreground shrink-0">{label}</p>
       <div
-        className={`text-sm font-medium text-right ${
-          mono ? "font-mono break-all" : ""
+        className={`text-sm font-medium sm:text-right ${
+          mono ? "font-mono text-xs break-all text-foreground/70" : ""
         }`}
       >
-        {icon && <span className="inline-flex mr-1">{icon}</span>}
-        {value}
+        <span className="inline-flex items-center gap-1.5">
+          {icon}
+          {value}
+        </span>
       </div>
     </div>
   );
 }
 
-function ResourceStat({ label, value }: { label: string; value: string }) {
+function ResourceStat({
+  label,
+  value,
+  icon,
+}: {
+  label: string;
+  value: string;
+  icon?: React.ReactNode;
+}) {
   return (
     <div className="flex items-center justify-between text-sm">
-      <span className="text-muted-foreground">{label}</span>
-      <span className="font-medium">{value}</span>
+      <span className="text-muted-foreground flex items-center gap-2">
+        {icon}
+        {label}
+      </span>
+      <span className="font-medium text-foreground/80">{value}</span>
     </div>
   );
 }
+// </div>
+//   );
+// }

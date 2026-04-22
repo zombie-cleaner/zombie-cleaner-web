@@ -38,7 +38,7 @@ export function RegisterForm() {
   return (
     <Card className="border-border shadow-lg">
       <CardHeader>
-        <CardTitle className="text-xl">Register</CardTitle>
+        <CardTitle className="text-lg font-semibold">Register</CardTitle>
         <CardDescription>Create a new account to get started</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>

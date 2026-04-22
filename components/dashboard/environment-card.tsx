@@ -18,13 +18,13 @@ export function EnvironmentCard({ environment }: EnvironmentCardProps) {
   return (
     <Card className="hover:shadow-md hover:border-primary/30 transition-all duration-300 hover:-translate-y-0.5">
       <CardHeader>
-        <CardTitle className="text-lg">{environment.name}</CardTitle>
+        <CardTitle className="text-base font-semibold">{environment.name}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">
           <div>
             <p className="text-xs text-muted-foreground mb-1">AWS Role ARN</p>
-            <p className="text-sm min-h-12 font-mono text-foreground/80 break-all">
+            <p className="text-xs font-mono text-foreground/70 break-all min-h-10">
               {environment.roleArn}
             </p>
           </div>

@@ -64,7 +64,8 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-geist)', 'Geist', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'Geist Mono', 'monospace'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

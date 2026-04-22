@@ -7,8 +7,8 @@ import { config } from "@/config";
 import { AppHeader } from "@/components/layout/app-header";
 import { AppFooter } from "@/components/layout/app-footer";
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const metadata: Metadata = {
   title: `${config.appName} - AWS Resource Management`,
@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased flex flex-col min-h-screen`}>
+      <body className={`${geist.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <AppHeader />
         <main className="flex-1">{children}</main>
         <AppFooter />

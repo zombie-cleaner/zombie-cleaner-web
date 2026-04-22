@@ -16,12 +16,12 @@ export function AppFooter() {
   }
 
   return (
-    <footer className="border-t border-border bg-muted/30 mt-16 sm:mt-20">
+    <footer className="border-t border-border bg-muted/30 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="col-span-1">
-            <h3 className="text-lg font-bold text-foreground mb-2">
+            <h3 className="text-base font-semibold text-foreground mb-2">
               {config.appName}
             </h3>
             <p className="text-sm text-muted-foreground">

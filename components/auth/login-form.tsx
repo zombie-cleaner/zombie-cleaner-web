@@ -38,7 +38,7 @@ export function LoginForm() {
   return (
     <Card className="border-border shadow-lg">
       <CardHeader>
-        <CardTitle className="text-xl">Login</CardTitle>
+        <CardTitle className="text-lg font-semibold">Login</CardTitle>
         <CardDescription>
           Enter your credentials to access your account
         </CardDescription>
