@@ -141,7 +141,7 @@ export function AddEnvironmentModal({
                 size="sm"
                 onClick={() =>
                   window.open(
-                    `https://console.aws.amazon.com/cloudformation/home#/stacks/create/review?templateURL=${templateUrl}&stackName=idlezero-Integration&param_ExternalId=${externalId}`,
+                    `https://console.aws.amazon.com/cloudformation/home#/stacks/create/review?templateURL=${templateUrl}&stackName=Idlezero-integration&param_ExternalId=${externalId}`,
                     "_blank",
                   )
                 }

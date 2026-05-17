@@ -7,7 +7,7 @@ const CtaSection = () => {
   const router = useRouter();
   return (
     <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-      <div className="p-10 md:p-14 bg-gradient-to-br from-primary/5 via-primary/8 to-primary/5 border border-primary/20 rounded-2xl">
+      <div className="p-10 md:p-14 from-primary/5 via-primary/8 to-primary/5 border border-primary/20 rounded-2xl">
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
           Ready to Clean Up Your AWS?
         </h2>
