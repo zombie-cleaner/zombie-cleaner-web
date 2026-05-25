@@ -27,30 +27,41 @@ export function ResourceDiscovery() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Resource Discovery</h2>
+          <h2 className="text-2xl font-bold tracking-tight">
+            Resource Discovery
+          </h2>
           <p className="text-muted-foreground mt-1">
             Browse and manage resources discovered in this environment
           </p>
         </div>
       </div>
 
-      <Accordion type="multiple" className="w-full">
+      <Accordion type="multiple" className="w-full space-y-4">
         {Object.entries(RESOURCES).map(([type, resources]) => (
-          <AccordionItem key={type} value={type}>
-            <AccordionTrigger className="text-lg font-semibold">
+          <AccordionItem key={type} value={type} className="border-none">
+            <AccordionTrigger className="text-lg font-semibold border-2 py-3 px-4 border-border rounded-xl hover:no-underline data-[state=open]:rounded-b-none data-[state=open]:bg-accent/50 data-[state=open]:border-primary/50 transition-all">
               {type} ({resources.length})
             </AccordionTrigger>
-            <AccordionContent>
+            <AccordionContent className="border-x-2 border-b-2 border-primary/50 rounded-b-xl pt-4 px-4 pb-4">
               <div className="grid gap-3">
                 {resources.map((resource) => (
-                  <Card key={resource.id} className="p-4 flex items-center justify-between">
+                  <Card
+                    key={resource.id}
+                    className="p-4 flex items-center justify-between"
+                  >
                     <div>
                       <p className="font-medium">{resource.name}</p>
-                      <p className="text-xs text-muted-foreground font-mono">{resource.id}</p>
+                      <p className="text-xs text-muted-foreground font-mono">
+                        {resource.id}
+                      </p>
                     </div>
                     <div className="flex items-center gap-4">
-                      <span className="text-xs bg-muted px-2 py-1 rounded-full">{resource.status}</span>
-                      <Button variant="outline" size="sm">Manage</Button>
+                      <span className="text-xs bg-muted px-2 py-1 rounded-full">
+                        {resource.status}
+                      </span>
+                      <Button variant="outline" size="sm">
+                        Manage
+                      </Button>
                     </div>
                   </Card>
                 ))}

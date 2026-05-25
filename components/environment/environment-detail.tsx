@@ -59,10 +59,10 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">
             {environment.name}
           </h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-muted-foreground mt-1">
             Environment details and resource management
           </p>
         </div>
