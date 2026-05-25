@@ -17,6 +17,7 @@ import {
   Database,
   FunctionSquare,
   Clock,
+  PaintBucket,
 } from "lucide-react";
 import Link from "next/link";
 import { useEnvironments } from "@/hooks/use-environments";
@@ -29,6 +30,24 @@ interface EnvironmentDetailProps {
 export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
   const { environments } = useEnvironments();
   const environment = environments.find((env) => env.id === environmentId);
+
+  const resources = [
+    {
+      label: "EC2 Instances",
+      value: "5",
+      icon: <Server className="h-4 w-4 text-muted-foreground/60" />,
+    },
+    {
+      label: "RDS Databases",
+      value: "2",
+      icon: <Database className="h-4 w-4 text-muted-foreground/60" />,
+    },
+    {
+      label: "S3 Buckets",
+      value: "12",
+      icon: <PaintBucket className="h-4 w-4 text-muted-foreground/60" />,
+    },
+  ];
 
   if (!environment) {
     return (
@@ -112,23 +131,14 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
           </CardHeader>
 
           <CardContent className="space-y-3">
-            <ResourceStat
-              label="EC2 Instances"
-              value="5"
-              icon={<Server className="h-4 w-4 text-muted-foreground/60" />}
-            />
-            <ResourceStat
-              label="RDS Databases"
-              value="2"
-              icon={<Database className="h-4 w-4 text-muted-foreground/60" />}
-            />
-            <ResourceStat
-              label="Lambda Functions"
-              value="12"
-              icon={
-                <FunctionSquare className="h-4 w-4 text-muted-foreground/60" />
-              }
-            />
+            {resources.map((resource) => (
+              <ResourceStat
+                key={resource.label}
+                label={resource.label}
+                value={resource.value}
+                icon={resource.icon}
+              />
+            ))}
 
             <div className="pt-4 border-t border-border/50">
               <Link href={`/environment/${environmentId}/discovery`}>
