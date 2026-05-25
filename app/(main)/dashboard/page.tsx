@@ -1,4 +1,3 @@
-import { DashboardHeader } from "@/components/dashboard/dashboard-header"
 import { EnvironmentList } from "@/components/dashboard/environment-list"
 import { config } from "@/config"
 import type { Metadata } from "next"

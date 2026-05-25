@@ -4,8 +4,7 @@ import type React from "react";
 import { clientConfig } from "@/config/client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { FormField } from "@/components/ui/form-field";
 import {
   Dialog,
   DialogContent,
@@ -90,36 +89,32 @@ export function AddEnvironmentModal({
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="space-y-4 py-4">
+            <FormField
+              id="env-name"
+              label="Environment Name"
+              placeholder="dev_environment"
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              required
+              disabled={isSubmitting}
+            />
+            <FormField
+              id="env-description"
+              label="Environment Description"
+              placeholder="Description for your environment"
+              value={formData.description}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
+              required
+              disabled={isSubmitting}
+            />
             <div className="space-y-2">
-              <Label htmlFor="env-name">Environment Name</Label>
-              <Input
-                id="env-name"
-                placeholder="dev_environment"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="env-description">Environment Description</Label>
-              <Input
-                id="env-description"
-                placeholder="Description for your environment"
-                value={formData.description}
-                onChange={(e) =>
-                  setFormData({ ...formData, description: e.target.value })
-                }
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="role-arn">AWS Role ARN</Label>
-              <Input
+              <FormField
                 id="role-arn"
+                label="AWS Role ARN"
                 placeholder="arn:aws:iam::123456789012:role/ZombieCleanerRole"
                 value={formData.roleArn}
                 onChange={(e) =>

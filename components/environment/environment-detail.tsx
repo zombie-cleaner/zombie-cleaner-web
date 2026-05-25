@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useEnvironments } from "@/hooks/use-environments";
+import BackButton from "../ui/back-button";
 
 interface EnvironmentDetailProps {
   environmentId: string;
@@ -33,10 +34,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
     return (
       <div className="space-y-4">
         <Link href="/dashboard">
-          <Button variant="ghost" size="sm">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Dashboard
-          </Button>
+          <BackButton prevPage="dashboard" />
         </Link>
 
         <Card>
@@ -55,14 +53,7 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
     <div className="space-y-6">
       {/* Back */}
       <Link href="/dashboard">
-        <Button
-          variant="ghost"
-          size="sm"
-          className="hover:bg-accent/50 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Dashboard
-        </Button>
+        <BackButton prevPage="dashboard" />
       </Link>
 
       {/* Page Header */}
@@ -123,27 +114,28 @@ export function EnvironmentDetail({ environmentId }: EnvironmentDetailProps) {
           <CardContent className="space-y-3">
             <ResourceStat
               label="EC2 Instances"
-              value="—"
+              value="5"
               icon={<Server className="h-4 w-4 text-muted-foreground/60" />}
             />
             <ResourceStat
-              label="S3 Buckets"
-              value="—"
+              label="RDS Databases"
+              value="2"
               icon={<Database className="h-4 w-4 text-muted-foreground/60" />}
             />
             <ResourceStat
               label="Lambda Functions"
-              value="—"
+              value="12"
               icon={
                 <FunctionSquare className="h-4 w-4 text-muted-foreground/60" />
               }
             />
 
-            <div className="flex items-center gap-1.5 pt-3 border-t border-border/50">
-              <Clock className="h-3.5 w-3.5 text-muted-foreground/60" />
-              <p className="text-xs text-muted-foreground">
-                Resource discovery coming soon
-              </p>
+            <div className="pt-4 border-t border-border/50">
+              <Link href={`/environment/${environmentId}/discovery`}>
+                <Button variant="outline" className="w-full gap-2 text-sm">
+                  View Full Discovery
+                </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>

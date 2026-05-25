@@ -12,31 +12,18 @@ export function AppHeader() {
   const router = useRouter();
   const pathname = usePathname();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
-  const hiddenPages = ["/login", "/register"];
   const isLanding = pathname === "/";
 
   useEffect(() => {
     const user = sessionStorage.getItem("user");
     setIsLoggedIn(!!user);
-    setIsLoading(false);
   }, []);
-
-  if (hiddenPages.includes(pathname)) {
-    return null;
-  }
 
   const handleLogout = () => {
     sessionStorage.removeItem("user");
     router.push("/login");
   };
-
-  if (isLoading) {
-    return (
-      <header className="sticky top-0 z-40 h-16 border-b border-transparent" />
-    );
-  }
 
   return (
     <header

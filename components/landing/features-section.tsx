@@ -1,10 +1,9 @@
 import React from "react";
-import { Trash2 } from "lucide-react";
-import { Shield } from "lucide-react";
-import { Zap } from "lucide-react";
-import { Check } from "lucide-react";
-import { feature } from "@/types/components/landing/featuers-section";
-const FeaturesSection = () => {
+import { Trash2, Shield, Zap } from "lucide-react";
+import { feature } from "@/types/components/landing/features-section";
+import { Card } from "@/components/ui/card";
+
+export function FeaturesSection() {
   const features: feature[] = [
     {
       icon: Trash2,
@@ -37,29 +36,23 @@ const FeaturesSection = () => {
         </p>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features?.map((feature, index) => (
-          <div
+        {features.map((feature, index) => (
+          <Card
             key={index}
-            className="border border-border rounded-xl p-6 bg-card hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:-translate-y-0.5 group"
+            className="p-6 hover:border-primary/30 hover:-translate-y-0.5 group"
           >
             <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300">
-              {feature?.icon ? (
-                <feature.icon className="h-5 w-5 text-primary" />
-              ) : (
-                <></>
-              )}
+              <feature.icon className="h-5 w-5 text-primary" />
             </div>
             <h3 className="text-base font-semibold text-foreground mb-2">
-              {feature?.title || ""}
+              {feature.title}
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              {feature?.description || ""}
+              {feature.description}
             </p>
-          </div>
+          </Card>
         ))}
       </div>
     </section>
   );
-};
-
-export default FeaturesSection;
+}

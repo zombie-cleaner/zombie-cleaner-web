@@ -3,7 +3,7 @@ import { Trash2, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 
-const HeroSection = () => {
+export function HeroSection() {
   const router = useRouter();
   return (
     <section className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 text-center">
@@ -50,6 +50,4 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

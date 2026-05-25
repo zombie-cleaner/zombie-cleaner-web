@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SectionBreaker from "../ui/section-breaker";
-import HeroSection from "./hero-section";
-import FeaturesSection from "./features-section";
-import CtaSection from "./cta-section";
+import { SectionBreaker } from "../ui/section-breaker";
+import { HeroSection } from "./hero-section";
+import { FeaturesSection } from "./features-section";
+import { CtaSection } from "./cta-section";
 
 export function LandingPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
