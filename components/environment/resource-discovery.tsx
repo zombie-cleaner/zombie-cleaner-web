@@ -59,7 +59,11 @@ export function ResourceDiscovery() {
                       <span className="text-xs bg-muted px-2 py-1 rounded-full">
                         {resource.status}
                       </span>
-                      <Button variant="outline" size="sm">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="bg-gray-900 text-white hover:bg-gray-900/80 hover:text-white"
+                      >
                         Manage
                       </Button>
                     </div>
