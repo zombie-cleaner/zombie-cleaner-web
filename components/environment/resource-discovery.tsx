@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -8,9 +9,16 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { ManageResourceModal } from "@/components/environment/manage-resource-modal";
+
+interface Resource {
+  id: string;
+  name: string;
+  status: string;
+}
 
 // Mock resource data
-const RESOURCES = {
+const RESOURCES: Record<string, Resource[]> = {
   EC2: [
     { id: "i-1234567890abcdef0", name: "Web Server Prod", status: "Running" },
     { id: "i-0987654321fedcba0", name: "DB Proxy Instance", status: "Stopped" },
@@ -23,6 +31,14 @@ const RESOURCES = {
 };
 
 export function ResourceDiscovery() {
+  const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleManage = (resource: Resource) => {
+    setSelectedResource(resource);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -63,6 +79,7 @@ export function ResourceDiscovery() {
                         variant="outline"
                         size="sm"
                         className="bg-gray-900 text-white hover:bg-gray-900/80 hover:text-white"
+                        onClick={() => handleManage(resource)}
                       >
                         Manage
                       </Button>
@@ -74,6 +91,12 @@ export function ResourceDiscovery() {
           </AccordionItem>
         ))}
       </Accordion>
+
+      <ManageResourceModal
+        resource={selectedResource}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }
